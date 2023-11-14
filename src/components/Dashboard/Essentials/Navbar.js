@@ -13,7 +13,7 @@ function Navb() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/">Hotel</Nav.Link>
             <Nav.Link as={Link} to="/ngo">NGO</Nav.Link>
             <Nav.Link as={Link} to="/composter">Composter</Nav.Link>
             <Nav.Link as={Link} to="/farmer">Farmer</Nav.Link>
