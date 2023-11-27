@@ -29,7 +29,7 @@ const AuthRoute = (props) => {
           {
             console.log("hotel");
             await props.setUserRole(role);
-            navigate('/');
+            navigate('/') ;
           }
           else if(role === "ngo")
           {
