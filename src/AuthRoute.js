@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
 import firebase from './firebase-config';
 
-const AuthRoute = () => {
+const AuthRoute = () =>  {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
