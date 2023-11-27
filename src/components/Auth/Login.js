@@ -38,7 +38,7 @@ const Login = (props) => {
             
                       // Redirect based on role
                       if (role === 'hotel') {
-                        Navigate('/hotel');
+                        Navigate('/');
                       } else if (role === 'farmer') {
                         Navigate('/farmer');
                       } else if (role === 'ngo') {
