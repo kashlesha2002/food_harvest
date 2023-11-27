@@ -45,6 +45,17 @@
     border: 1px solid #cd1e76;
 
 }
+.main_container_signup .box select
+{
+    width: 80%;
+    padding: 10px 20px;
+    margin-left: 30px;
+    outline: none;
+    border:#cd1e76;
+    border-radius: 5px;
+    border: 1px solid #cd1e76;
+
+}
 
 .main_container_signup p
 {

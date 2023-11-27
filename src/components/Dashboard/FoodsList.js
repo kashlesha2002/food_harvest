@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
-import BookDataService from "../../services/book.services";
+import {bookDataService} from "../../services/service";
 
-const FoodsList = ({ getFoodId }) => {
+const FoodsList = ({ getFoodId, isComposter, isHotel, isNgo }) => {
   const [books, setBooks] = useState([]);
   useEffect(() => {
     getBooks();
   }, []);
  
   const getBooks = async () => {
-    const data = await BookDataService.getAllBooks();
+    const data = await bookDataService.getAllBooks();
     console.log(data.docs);
     setBooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
 
   const deleteHandler = async (id) => {
-    await BookDataService.deleteBook(id);
+    await bookDataService.deleteBook(id);
     getBooks();
   };
   return (
     <>
       <div className="mb-2">
-        <Button variant="dark edit" onClick={getBooks}>
+        <Button variant="dark edit p-2" onClick={getBooks}>
           Refresh List
         </Button>
       </div>
@@ -34,10 +34,11 @@ const FoodsList = ({ getFoodId }) => {
             <th>Location</th>
             <th>Email</th>
             <th>Phone-no</th>
-            <th>Edible-Food</th>
-            <th>Non-Edible-Food</th>
+            {isHotel && (<><th>Edible-Food</th> <th>Non-Edible-Food</th></>)}
+            {isComposter && <th>Non-Edible-Food</th>}
+            {isNgo && <th>Edible-Food</th>}
             <th>Status</th>
-            {getFoodId && <th>Action</th>}
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -49,8 +50,9 @@ const FoodsList = ({ getFoodId }) => {
                 <td>{doc.location}</td>
                 <td>{doc.email}</td>
                 <td>{doc.phoneNum}</td>
-                <td>{doc.edibleFood}</td>
-                <td>{doc.nonEdibleFood}</td>
+                {isHotel && (<><td>{doc.edibleFood}</td> <td>{doc.nonEdibleFood}</td></>)}
+                {isComposter && <td>{doc.nonEdibleFood}</td>}
+                {isNgo && <td>{doc.edibleFood}</td> }
                 <td>{doc.status}</td>
                 {getFoodId && (
                   <td>
@@ -70,6 +72,24 @@ const FoodsList = ({ getFoodId }) => {
                     </Button>
                   </td>
                 )}
+                {
+                  !getFoodId && (
+                    <td>
+                      <Button
+                        variant="success"
+                        className="edit m-2"
+                      >
+                       <a className="text-white edit m-2" href={`tel:${doc.phoneNum}`}>Call</a>
+                      </Button>
+                      <Button
+                        variant="success"
+                        className="edit m-2"
+                        >
+                          <a className="text-white" href={`mailto:${doc.email}`}>Mail</a>
+                        </Button>
+                    </td>
+                  )
+                }
               </tr>
             );
           })}

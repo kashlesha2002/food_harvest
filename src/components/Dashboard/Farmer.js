@@ -1,5 +1,6 @@
-import { Container} from "react-bootstrap";
+import { Col, Container, Row} from "react-bootstrap";
 import Navb from "./Essentials/Navbar";
+import ComposterList from "./Composter/ComposterList";
 
 function Farmer() {
  
@@ -13,6 +14,15 @@ function Farmer() {
         <p className="text-center mb-4">Welcome to the Farmer's Dashboard. You can add and manage your farm-related information here.</p>
        
       </Container>
+
+      {/* <Container>
+        <Row>
+          <Col>
+            <ComposterList />
+          </Col>
+        </Row>
+      </Container> */}
+
     </>
   );
 }

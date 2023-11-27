@@ -14,7 +14,7 @@ function Ngo() {
       <Container>
         <Row>
           <Col>
-            <FoodsList />
+            <FoodsList isNgo = {true} />
           </Col>
         </Row>
       </Container>

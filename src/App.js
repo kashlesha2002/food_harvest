@@ -8,22 +8,24 @@ import React from 'react';
 import Ngo from "./components/Dashboard/Ngo";
 import Farmer from "./components/Dashboard/Farmer";
 import Composter from "./components/Dashboard/Composter";
+import Home from "./components/Dashboard/Home";
 
 function App() {
+  const [userRole, setUserRole] = React.useState(null);
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login setUserRole = {setUserRole}  />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/home" element={<Home/>} />
 
-          <Route path='/' element={<AuthRoute />}>
+          <Route path='/' element={<AuthRoute setUserRole={setUserRole} />}>
 
-            <Route index element={<Dashboard />} />
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/ngo" element={<Ngo />} />
-            <Route path="/composter" element={<Composter />} />
-            <Route path="/farmer" element={<Farmer />} />
+            <Route index element={<Dashboard />} /> 
+            <Route path="ngo" element={<Ngo />} /> 
+            <Route path="composter" element={<Composter />} /> 
+            <Route path="farmer" element={<Farmer />} /> 
 
           </Route>
         </Routes>

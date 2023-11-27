@@ -1,70 +1,69 @@
 import React, { useState, useEffect } from "react";
 import { Form, Alert, InputGroup, Button, ButtonGroup } from "react-bootstrap";
-import {bookDataService} from "../../services/service";
+import {composterDataService} from "../../../services/service";
 
-const AddFood = ({ id, setFoodId }) => {
-  const [hotelName, setHotelname] = useState("");
+const AddComposter = ({ id, setComposterId }) => {
+  const [composterName, setComposterName] = useState("");
   const [location, setLocation] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
-  const [edibleFood, setEdibleFood] = useState("");
-  const [nonEdibleFood, setNonEdibleFood] = useState("");
+  const [composeFertilizer, setComposeFertilizer] = useState("");
   const [status, setStatus] = useState("Available");
+  const [kg, setKg] = useState(0);
   const [flag, setFlag] = useState(true);
   const [message, setMessage] = useState({ error: false, msg: "" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
-    if (hotelName === "" || location === "" || email ==="" || phoneNum ==="" || edibleFood ===""  || nonEdibleFood ==="") {
+    if (composterName === "" || location === "" || email ==="" || phoneNum ==="" || composeFertilizer ==="") {
       setMessage({ error: true, msg: "All fields are mandatory!" });
       return;
     }
-    const newBook = {
-      hotelName,
+    const newComposter = {
+      composterName,
       location,
       email,
       phoneNum,
-      edibleFood,
-      nonEdibleFood,
-      status
+      composeFertilizer,      
+      status,
+      kg
     };
-    console.log(newBook);
+
 
     try {
       if (id !== undefined && id !== "") {
-        await bookDataService.updateBook(id, newBook);
-        setFoodId("");
+        await composterDataService.updateComposter(id, newComposter);
+        setComposterId("");
         setMessage({ error: false, msg: "Updated successfully!" });
       } else {
-        await bookDataService.addBooks(newBook);
+        await composterDataService.addComposter(newComposter);
         setMessage({ error: false, msg: "New Hotel added successfully!" });
       }
     } catch (err) {
       setMessage({ error: true, msg: err.message });
     }
 
-    setHotelname("");
+    setComposterName("");
     setLocation("");
     setEmail("");
     setPhoneNum("");
-    setEdibleFood("");
-    setNonEdibleFood("");
+    setComposeFertilizer("");
 
   };
 
   const editHandler = async () => {
     setMessage("");
     try {
-      const docSnap = await bookDataService.getBook(id);
+      const docSnap = await composterDataService.getComposter(id);
       console.log("the record is :", docSnap.data());
-      setHotelname(docSnap.data().hotelName);
+      setComposterName(docSnap.data().composterName);
       setLocation(docSnap.data().location);
       setEmail(docSnap.data().email);
       setPhoneNum(docSnap.data().phoneNum);
-      setEdibleFood(docSnap.data().edibleFood);
-      setNonEdibleFood(docSnap.data().nonEdibleFood);
+      setComposeFertilizer(docSnap.data().composeFertilizer);
       setStatus(docSnap.data().status);
+      setKg(docSnap.data().kg);
     } catch (err) {
       setMessage({ error: true, msg: err.message });
     }
@@ -92,19 +91,19 @@ const AddFood = ({ id, setFoodId }) => {
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBookTitle">
             <InputGroup>
-              <InputGroup.Text id="formBookTitle">B</InputGroup.Text>
+              <InputGroup.Text id="formBookTitle">1</InputGroup.Text>
               <Form.Control
                 type="text"
-                placeholder="Hotel Name"
-                value={hotelName}
-                onChange={(e) => setHotelname(e.target.value)}
+                placeholder="Composter Name"
+                value={composterName}
+                onChange={(e) => setComposterName(e.target.value)}
               />
             </InputGroup>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBookTitle">
             <InputGroup>
-              <InputGroup.Text id="formBookTitle">B</InputGroup.Text>
+              <InputGroup.Text id="formBookTitle">2</InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Location"
@@ -116,7 +115,7 @@ const AddFood = ({ id, setFoodId }) => {
 
           <Form.Group className="mb-3" controlId="formBookTitle">
             <InputGroup>
-              <InputGroup.Text id="formBookTitle">B</InputGroup.Text>
+              <InputGroup.Text id="formBookTitle">3</InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Email"
@@ -128,7 +127,7 @@ const AddFood = ({ id, setFoodId }) => {
 
           <Form.Group className="mb-3" controlId="formBookTitle">
             <InputGroup>
-              <InputGroup.Text id="formBookTitle">B</InputGroup.Text>
+              <InputGroup.Text id="formBookTitle">4</InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Phone-No"
@@ -140,24 +139,25 @@ const AddFood = ({ id, setFoodId }) => {
 
           <Form.Group className="mb-3" controlId="formBookTitle">
             <InputGroup>
-              <InputGroup.Text id="formBookTitle">B</InputGroup.Text>
+              <InputGroup.Text id="formBookTitle">5</InputGroup.Text>
               <Form.Control
                 type="text"
-                placeholder="Edible-Food"
-                value={edibleFood}
-                onChange={(e) => setEdibleFood(e.target.value)}
+                placeholder="Add Compost Fertilizer"
+                value={composeFertilizer}
+                onChange={(e) => setComposeFertilizer(e.target.value)}
               />
             </InputGroup>
           </Form.Group>
 
+
           <Form.Group className="mb-3" controlId="formBookTitle">
             <InputGroup>
-              <InputGroup.Text id="formBookTitle">B</InputGroup.Text>
+              <InputGroup.Text id="formBookTitle">6</InputGroup.Text>
               <Form.Control
-                type="text"
-                placeholder="Non-Edible-Food"
-                value={nonEdibleFood}
-                onChange={(e) => setNonEdibleFood(e.target.value)}
+                type="number"
+                placeholder="Add Composition in Kg"
+                value={kg}
+                onChange={(e) => setKg(e.target.value)}
               />
             </InputGroup>
           </Form.Group>
@@ -198,4 +198,4 @@ const AddFood = ({ id, setFoodId }) => {
   );
 };
 
-export default AddFood;
+export default AddComposter;
