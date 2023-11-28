@@ -51,9 +51,7 @@ const Login = (props) => {
                     } else {
                       alert('User data not available');
                     }
-
                 }
-               
             }
         }
         catch (error) {
@@ -64,7 +62,7 @@ const Login = (props) => {
         <>
             <div className='main_container_signup'>
                 <div className='header'>
-                    <h2>Signup</h2>
+                    <h2>Login</h2>
                 </div>
                 <div className='box'>
                     <input type='email' value={email} placeholder='E-mail' onChange={(e) => setEmail(e.target.value)} ></input>

@@ -7,7 +7,7 @@ function Ngo() {
     <>
       <Navb />
 
-      <Container style={{ width: "400px" }}>
+      <Container style={{ width: "400px" } }>
       <h2 className="text-center mt-5">NGO</h2>
         <p className="text-center mb-4">Welcome to the NGO's Dashboard. Here, you can manage information related to NGO activities.</p>
       </Container>
