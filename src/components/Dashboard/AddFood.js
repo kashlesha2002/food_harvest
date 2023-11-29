@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Form, Alert, InputGroup, Button, ButtonGroup } from "react-bootstrap";
 import {bookDataService} from "../../services/service";
+import Cookies from "js-cookie";
 
 const AddFood = ({ id, setFoodId }) => {
   const [hotelName, setHotelname] = useState("");
   const [location, setLocation] = useState("");
-  const [email, setEmail] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
   const [edibleFood, setEdibleFood] = useState("");
   const [nonEdibleFood, setNonEdibleFood] = useState("");
@@ -16,10 +16,12 @@ const AddFood = ({ id, setFoodId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
-    if (hotelName === "" || location === "" || email ==="" || phoneNum ==="" || edibleFood ===""  || nonEdibleFood ==="") {
+    if (hotelName === "" || location === "" || phoneNum ==="" || edibleFood ===""  || nonEdibleFood ==="") {
       setMessage({ error: true, msg: "All fields are mandatory!" });
       return;
     }
+
+    const email = await Cookies.get("userEmail")
     const newBook = {
       hotelName,
       location,
@@ -46,7 +48,6 @@ const AddFood = ({ id, setFoodId }) => {
 
     setHotelname("");
     setLocation("");
-    setEmail("");
     setPhoneNum("");
     setEdibleFood("");
     setNonEdibleFood("");
@@ -57,10 +58,8 @@ const AddFood = ({ id, setFoodId }) => {
     setMessage("");
     try {
       const docSnap = await bookDataService.getBook(id);
-      console.log("the record is :", docSnap.data());
       setHotelname(docSnap.data().hotelName);
       setLocation(docSnap.data().location);
-      setEmail(docSnap.data().email);
       setPhoneNum(docSnap.data().phoneNum);
       setEdibleFood(docSnap.data().edibleFood);
       setNonEdibleFood(docSnap.data().nonEdibleFood);
@@ -110,18 +109,6 @@ const AddFood = ({ id, setFoodId }) => {
                 placeholder="Location"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-              />
-            </InputGroup>
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBookTitle">
-            <InputGroup>
-              <InputGroup.Text id="formBookTitle">B</InputGroup.Text>
-              <Form.Control
-                type="text"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
               />
             </InputGroup>
           </Form.Group>

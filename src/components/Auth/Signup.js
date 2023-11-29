@@ -1,45 +1,42 @@
-import React, { useState } from 'react'
-import './signup.css'
-import {Link, useNavigate} from 'react-router-dom'
-import firebase from '../../firebase-config'
-import { userDataService } from '../../services/service'
-
-
+import React, { useState } from 'react';
+import './signup.css';
+import { Link, useNavigate } from 'react-router-dom';
+import firebase from '../../firebase-config';
+import { userDataService } from '../../services/service';
 
 const Signup = () => {
-    const [name , setName] =useState('')
-    const [email , setEmail] =useState('')
-    const [password , setPass] =useState('')
-    const [role , setRole] =useState('')
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPass] = useState('');
+    const [role, setRole] = useState('');
     const navigate = useNavigate();
 
+    const submit = async (e) => {
+        e.preventDefault();
+        try {
+            const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+            if (userCredential && userCredential.user) {
+                const user = userCredential.user;
 
-    const submit= async(e)=>
-    {
-        e.preventDefault()
-        try
-        {
-             const user = await firebase.auth().createUserWithEmailAndPassword(email , password)
-             if (user && user.user)
-             {
-                const {uid} = user.user;
+                // Send verification email
+                await user.sendEmailVerification();
+
+                const { uid } = user;
                 const datatofirestore = await userDataService.addUser({
                     uid,
                     name,
                     email,
                     role
-                })
-                console.log(datatofirestore)
-                alert("Account Created Successfully...")
+                });
+                console.log(datatofirestore);
+                alert("Account Created Successfully. Please check your email for verification.");
                 navigate('/login');
-
-             }
+            }
+        } catch (error) {
+            alert(error.message);
         }
-        catch(error)
-        {
-            alert(error)
-        }
-    }
+    };
+    
   return (
     <>
     <div className='main_container_signup'>

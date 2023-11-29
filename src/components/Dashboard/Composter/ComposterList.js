@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card, Button } from "react-bootstrap";
 import { composterDataService } from "../../../services/service";
+import Cookies from "js-cookie";
 
 const ComposterList = ({ getComposterId }) => {
   const [composters, setComposters] = useState([]);
@@ -32,8 +33,8 @@ const ComposterList = ({ getComposterId }) => {
           <Card key={composter.id} className="m-2" style={{ width: "18rem", borderRadius: "16px", boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}>
             <Card.Body>
               <Card.Title style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{composter.composterName}</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">{composter.location}</Card.Subtitle>
             
-              <Card.Text>Location: {composter.location}</Card.Text>
               <Card.Text>Email: {composter.email}</Card.Text>
               <Card.Text>Phone no: {composter.phoneNum}</Card.Text>
               <Card.Text>Compose Fertilizer: {composter.composeFertilizer}</Card.Text>
@@ -41,7 +42,10 @@ const ComposterList = ({ getComposterId }) => {
               <Card.Text>Status: {composter.status}</Card.Text>
               
               {getComposterId ? (
-                <div>
+
+                 composter.email === Cookies.get('userEmail') ? (
+
+                  <div>
                  <Button
                     variant="success"
                     className="edit mr-2"
@@ -56,7 +60,15 @@ const ComposterList = ({ getComposterId }) => {
                   >
                     Delete
                   </Button>
-                </div>
+                </div> ) : (
+
+                  <div>
+
+
+                  </div>
+
+                )
+                
               ) : (
                 <div>
                   <Button variant="success" className="edit mr-2">

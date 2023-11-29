@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Form, Alert, InputGroup, Button, ButtonGroup } from "react-bootstrap";
 import {composterDataService} from "../../../services/service";
+import Cookies from "js-cookie";
 
 const AddComposter = ({ id, setComposterId }) => {
   const [composterName, setComposterName] = useState("");
   const [location, setLocation] = useState("");
-  const [email, setEmail] = useState("");
   const [phoneNum, setPhoneNum] = useState("");
   const [composeFertilizer, setComposeFertilizer] = useState("");
   const [status, setStatus] = useState("Available");
@@ -16,10 +16,13 @@ const AddComposter = ({ id, setComposterId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
-    if (composterName === "" || location === "" || email ==="" || phoneNum ==="" || composeFertilizer ==="") {
+    if (composterName === "" || location === "" || phoneNum ==="" || composeFertilizer ==="") {
       setMessage({ error: true, msg: "All fields are mandatory!" });
       return;
     }
+
+    const email = await Cookies.get("userEmail")
+    console.log(email);
     const newComposter = {
       composterName,
       location,
@@ -46,7 +49,6 @@ const AddComposter = ({ id, setComposterId }) => {
 
     setComposterName("");
     setLocation("");
-    setEmail("");
     setPhoneNum("");
     setComposeFertilizer("");
 
@@ -59,7 +61,6 @@ const AddComposter = ({ id, setComposterId }) => {
       console.log("the record is :", docSnap.data());
       setComposterName(docSnap.data().composterName);
       setLocation(docSnap.data().location);
-      setEmail(docSnap.data().email);
       setPhoneNum(docSnap.data().phoneNum);
       setComposeFertilizer(docSnap.data().composeFertilizer);
       setStatus(docSnap.data().status);
@@ -109,18 +110,6 @@ const AddComposter = ({ id, setComposterId }) => {
                 placeholder="Location"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-              />
-            </InputGroup>
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBookTitle">
-            <InputGroup>
-              <InputGroup.Text id="formBookTitle">3</InputGroup.Text>
-              <Form.Control
-                type="text"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
               />
             </InputGroup>
           </Form.Group>
