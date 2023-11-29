@@ -16,7 +16,6 @@ function Composter() {
   return (
     <>
       <Navb />
-
       <Container>
         <h2 className="text-center mt-5">Composter</h2>
         <p className="text-center mb-4">Welcome to the Composter's Dashboard. Here, you can manage information related to composting.</p>
@@ -48,7 +47,6 @@ function Composter() {
     
   );
 }
-
 export default Composter;
 
 
