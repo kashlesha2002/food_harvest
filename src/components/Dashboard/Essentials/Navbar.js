@@ -17,20 +17,18 @@ function Navb(props) {
   };
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" className="header ">
+    <Navbar variant="dark" expand="lg" className="header ">
       <Container>
-        <Navbar.Brand>
-          <img src={BrandLogo} alt="Food Harvest App Logo" className="logo-img"/>
+        <Navbar.Brand as={Link} to="/">
+          <img src={BrandLogo} alt="Food Harvest App Logo" className="logo-img" />
           Food Harvest App
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav >
-          <Nav.Link as={Link} to="/home">
-                Home
-              </Nav.Link>
+
             {Cookies.get("userRole") === "hotel" && (
-              <Nav.Link as={Link} to="/">
+              <Nav.Link as={Link} to="/dashboard">
                 Dashboard
               </Nav.Link>
             )}
@@ -49,9 +47,11 @@ function Navb(props) {
                 Farmer
               </Nav.Link>
             )}
-            <Nav.Link as={Link} to="/login" onClick={handleLogout}>
+            {Cookies.get("userRole") ? <Nav.Link as={Link} to="/login" onClick={handleLogout}>
               Logout
-            </Nav.Link>
+            </Nav.Link> : <> <Nav.Link as={Link} to="/login"> Login
+            </Nav.Link> <Nav.Link as={Link} to="/signup"> SignUp
+            </Nav.Link> </> }
           </Nav>
         </Navbar.Collapse>
       </Container>

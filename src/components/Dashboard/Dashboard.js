@@ -16,7 +16,7 @@ function Dashboard() {
     <>
      <Navb/>
 
-      <Container style={{ width: "400px" }}>
+      <Container className="mt-5" style={{ width: "400px", backgroundColor: "white", borderRadius: '20px' }}>
         <Row>
           <Col>
             <AddFood id={foodId} setFoodId={setFoodId} />

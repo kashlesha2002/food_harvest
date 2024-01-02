@@ -27,11 +27,12 @@ const AuthRoute = (props) => {
           console.log("userEmail:", userData.email);
           Cookies.set("userRole", role);
           Cookies.set("userEmail", userData.email);
+          Cookies.set("userProfile", userData.profileImageUrl);
           if(role === "hotel")
           {
             console.log("hotel");
             await props.setUserRole(role);
-            navigate('/');
+            navigate('/dashboard');
           }
           else if(role === "ngo")
           {

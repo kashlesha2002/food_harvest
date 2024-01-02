@@ -33,6 +33,7 @@ const FoodsList = ({ getFoodId, isComposter, isHotel, isNgo }) => {
       {books.map((doc, index) => (
         <Card key={doc.id}  className="m-2" style={{ width: "18rem", borderRadius: "16px", boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}>
           <Card.Body>
+            <Card.Img variant="top" src={doc.profileImageUrl} style={{ width: "100%", height: "200px", objectFit: "cover", borderRadius: "16px 16px 0 0" }} />
             <Card.Title style={{ fontSize: "1.5rem", fontWeight: "bold" }}>{doc.hotelName}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">{doc.location}</Card.Subtitle>
             <Card.Text>
@@ -86,6 +87,16 @@ const FoodsList = ({ getFoodId, isComposter, isHotel, isNgo }) => {
                     Mail
                   </a>
                 </Button>
+                <Button variant="info" className="edit m-2">
+                    <a
+                      className="text-white"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={`https://www.google.com/maps/search/?api=1&query=${doc.location}`}
+                    >
+                      Maps
+                    </a>
+                  </Button> 
               </>
             )}
           </Card.Body>

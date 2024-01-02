@@ -1,3 +1,18 @@
+body {
+  
+  background-image: url('./assets/images/bg.jpeg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  
+}
+
+.header {
+  background-color: #4F7942;
+  color: #fff;
+  text-align: center;
+}
+
 .header .container {
   justify-content: center;
 }

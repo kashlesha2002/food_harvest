@@ -18,11 +18,11 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login setUserRole = {setUserRole}  />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/home" element={<Home/>} />
+          <Route path="/" element={<Home/>} />
 
           <Route path='/' element={<AuthRoute setUserRole={setUserRole} />}>
 
-            <Route index element={<Dashboard />} /> 
+            <Route path="dashboard" element={<Dashboard />} /> 
             <Route path="ngo" element={<Ngo />} /> 
             <Route path="composter" element={<Composter />} /> 
             <Route path="farmer" element={<Farmer />} /> 

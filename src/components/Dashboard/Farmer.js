@@ -15,13 +15,13 @@ function Farmer() {
        
       </Container>
 
-      {/* <Container>
+      <Container>
         <Row>
           <Col>
             <ComposterList />
           </Col>
         </Row>
-      </Container> */}
+      </Container>
 
     </>
   );

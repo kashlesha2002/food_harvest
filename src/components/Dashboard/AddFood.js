@@ -22,6 +22,8 @@ const AddFood = ({ id, setFoodId }) => {
     }
 
     const email = await Cookies.get("userEmail")
+    const profileImageUrl = await Cookies.get("userProfile")
+    
     const newBook = {
       hotelName,
       location,
@@ -29,7 +31,8 @@ const AddFood = ({ id, setFoodId }) => {
       phoneNum,
       edibleFood,
       nonEdibleFood,
-      status
+      status,
+      profileImageUrl
     };
     console.log(newBook);
 

@@ -22,6 +22,7 @@ const AddComposter = ({ id, setComposterId }) => {
     }
 
     const email = await Cookies.get("userEmail")
+    const profileImageUrl = await Cookies.get("userProfile")
     console.log(email);
     const newComposter = {
       composterName,
@@ -30,7 +31,8 @@ const AddComposter = ({ id, setComposterId }) => {
       phoneNum,
       composeFertilizer,      
       status,
-      kg
+      kg,
+      profileImageUrl
     };
 
 
