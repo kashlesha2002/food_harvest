@@ -4,8 +4,8 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-     
- }
+  
+}
 
 .header {
   background-color: #4F7942;
@@ -64,4 +64,25 @@ table {
   height: 180px; 
   width: 300px;
   border-radius: 15px; 
+}
+
+.refresh-icon {
+  font-size: 4rem;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.refresh-icon:hover {
+  background-color: #1874d1; 
+  color: #fff;
+}
+
+.footer {
+
+  background-color: #4F7942;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  margin-top: 150px;
+  
 }

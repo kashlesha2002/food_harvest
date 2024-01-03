@@ -1,6 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Navb from "./Essentials/Navbar";
 import FoodsList from "./FoodsList";
+import Footer from "./Essentials/footer";
 
 function Ngo() {
   return (
@@ -18,6 +19,8 @@ function Ngo() {
           </Col>
         </Row>
       </Container>
+      
+      <Footer />
     </>
   );
 }

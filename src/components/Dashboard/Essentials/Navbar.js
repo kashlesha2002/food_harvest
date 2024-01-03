@@ -5,16 +5,18 @@ import Cookies from "js-cookie";
 import firebase from '../../../firebase-config'
 
 function Navb(props) {
+
   const handleLogout = async () => {
     try {
       await firebase.auth().signOut();
       Cookies.remove("userRole");
       props.setUserRole("");
-      window.location.href = "/login";
+      window.location.reload();
     } catch (error) {
       console.error('Error logging out:', error);
     }
   };
+
 
   return (
     <Navbar variant="dark" expand="lg" className="header ">
@@ -47,9 +49,9 @@ function Navb(props) {
                 Farmer
               </Nav.Link>
             )}
-            {Cookies.get("userRole") ? <Nav.Link as={Link} to="/login" onClick={handleLogout}>
-              Logout
-            </Nav.Link> : <> <Nav.Link as={Link} to="/login"> Login
+            {Cookies.get("userRole") ? <a href="/" className="nav-link" onClick={handleLogout}>
+          Logout
+        </a> : <> <Nav.Link as={Link} to="/login"> Login
             </Nav.Link> <Nav.Link as={Link} to="/signup"> SignUp
             </Nav.Link> </> }
           </Nav>

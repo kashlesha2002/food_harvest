@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import AddFood from "./AddFood";
 import FoodsList from "./FoodsList";
 import Navb from "./Essentials/Navbar";
+import Footer from "./Essentials/footer";
 
 function Dashboard() {
   const [foodId, setFoodId] = useState("");
@@ -30,6 +31,8 @@ function Dashboard() {
           </Col>
         </Row>
       </Container>
+
+      <Footer />
     </>
   );
 }

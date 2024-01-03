@@ -1,5 +1,6 @@
 import { Col, Container, Row} from "react-bootstrap";
 import Navb from "./Essentials/Navbar";
+import Footer from "./Essentials/footer";
 import ComposterList from "./Composter/ComposterList";
 
 function Farmer() {
@@ -22,6 +23,8 @@ function Farmer() {
           </Col>
         </Row>
       </Container>
+
+      <Footer />
 
     </>
   );

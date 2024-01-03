@@ -4,6 +4,7 @@ import FoodsList from "./FoodsList";
 import AddFood from "./Composter/AddComposter";
 import ComposterList from "./Composter/ComposterList";
 import { useState } from "react";
+import Footer from "./Essentials/footer";
 
 function Composter() {
 
@@ -72,6 +73,8 @@ function Composter() {
           </Row>
         </Container></>
       )}
+
+      <Footer />
     </>
 
   );

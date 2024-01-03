@@ -1,6 +1,7 @@
 import Navb from "./Essentials/Navbar";
 import BrandLogo from "../../assets/images/logo12.png";
 import { useSpring, animated } from 'react-spring';
+import Footer from "./Essentials/footer";
 
 function Home() {
 
@@ -77,6 +78,8 @@ function Home() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }
