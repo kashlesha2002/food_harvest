@@ -98,16 +98,7 @@ const ComposterList = ({ getComposterId }) => {
                   <Button variant="success" className="edit">
                     <i className="bi bi-envelope-fill"></i> <a className="text-white" href={`mailto:${composter.email}`}>Mail</a>
                   </Button>
-                  <Button variant="info" className="edit m-2">
-                    <a
-                      className="text-white"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href={`https://www.google.com/maps/search/?api=1&query=${doc.location}`}
-                    >
-                      Maps
-                    </a>
-                  </Button>
+                  
                 </div>
               )}
             </Card.Body>
