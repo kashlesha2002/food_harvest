@@ -92,9 +92,9 @@ const AddComposter = ({ id, setComposterId }) => {
         )}
 
         <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formBookTitle">
+          <Form.Group className="mb-3" controlId="formHotelTitle">
             <InputGroup>
-              <InputGroup.Text id="formBookTitle">1</InputGroup.Text>
+              <InputGroup.Text id="formHotelTitle">1</InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Composter Name"
@@ -104,9 +104,9 @@ const AddComposter = ({ id, setComposterId }) => {
             </InputGroup>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBookTitle">
+          <Form.Group className="mb-3" controlId="formHotelTitle">
             <InputGroup>
-              <InputGroup.Text id="formBookTitle">2</InputGroup.Text>
+              <InputGroup.Text id="formHotelTitle">2</InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Location"
@@ -116,9 +116,9 @@ const AddComposter = ({ id, setComposterId }) => {
             </InputGroup>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBookTitle">
+          <Form.Group className="mb-3" controlId="formHotelTitle">
             <InputGroup>
-              <InputGroup.Text id="formBookTitle">4</InputGroup.Text>
+              <InputGroup.Text id="formHotelTitle">4</InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Phone-No"
@@ -128,9 +128,9 @@ const AddComposter = ({ id, setComposterId }) => {
             </InputGroup>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBookTitle">
+          <Form.Group className="mb-3" controlId="formHotelTitle">
             <InputGroup>
-              <InputGroup.Text id="formBookTitle">5</InputGroup.Text>
+              <InputGroup.Text id="formHotelTitle">5</InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Add Compost Fertilizer"
@@ -141,9 +141,9 @@ const AddComposter = ({ id, setComposterId }) => {
           </Form.Group>
 
 
-          <Form.Group className="mb-3" controlId="formBookTitle">
+          <Form.Group className="mb-3" controlId="formHotelTitle">
             <InputGroup>
-              <InputGroup.Text id="formBookTitle">6</InputGroup.Text>
+              <InputGroup.Text id="formHotelTitle">6</InputGroup.Text>
               <Form.Control
                 type="number"
                 placeholder="Add Composition in Kg"

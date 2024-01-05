@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Form, Alert, InputGroup, Button, ButtonGroup } from "react-bootstrap";
-import {bookDataService} from "../../services/service";
+import {hotelDataService} from "../../services/service";
 import Cookies from "js-cookie";
 
 const AddFood = ({ id, setFoodId }) => {
@@ -12,7 +12,7 @@ const AddFood = ({ id, setFoodId }) => {
   const [status, setStatus] = useState("Available");
   const [flag, setFlag] = useState(true);
   const [message, setMessage] = useState({ error: false, msg: "" });
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
@@ -24,7 +24,7 @@ const AddFood = ({ id, setFoodId }) => {
     const email = await Cookies.get("userEmail")
     const profileImageUrl = await Cookies.get("userProfile")
     
-    const newBook = {
+    const newHotel = {
       hotelName,
       location,
       email,
@@ -34,15 +34,15 @@ const AddFood = ({ id, setFoodId }) => {
       status,
       profileImageUrl
     };
-    console.log(newBook);
+    console.log(newHotel);
 
     try {
       if (id !== undefined && id !== "") {
-        await bookDataService.updateBook(id, newBook);
+        await hotelDataService.updateHotel(id, newHotel);
         setFoodId("");
         setMessage({ error: false, msg: "Updated successfully!" });
       } else {
-        await bookDataService.addBooks(newBook);
+        await hotelDataService.addHotels(newHotel);
         setMessage({ error: false, msg: "New Hotel added successfully!" });
       }
     } catch (err) {
@@ -60,7 +60,7 @@ const AddFood = ({ id, setFoodId }) => {
   const editHandler = async () => {
     setMessage("");
     try {
-      const docSnap = await bookDataService.getBook(id);
+      const docSnap = await hotelDataService.getHotel(id);
       setHotelname(docSnap.data().hotelName);
       setLocation(docSnap.data().location);
       setPhoneNum(docSnap.data().phoneNum);
@@ -92,9 +92,9 @@ const AddFood = ({ id, setFoodId }) => {
         )}
 
         <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3" controlId="formBookTitle">
+          <Form.Group className="mb-3" controlId="formHotelTitle">
             <InputGroup>
-              <InputGroup.Text id="formBookTitle">B</InputGroup.Text>
+              <InputGroup.Text id="formHotelTitle">B</InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Hotel Name"
@@ -104,9 +104,9 @@ const AddFood = ({ id, setFoodId }) => {
             </InputGroup>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBookTitle">
+          <Form.Group className="mb-3" controlId="formHotelTitle">
             <InputGroup>
-              <InputGroup.Text id="formBookTitle">B</InputGroup.Text>
+              <InputGroup.Text id="formHotelTitle">B</InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Location"
@@ -116,9 +116,9 @@ const AddFood = ({ id, setFoodId }) => {
             </InputGroup>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBookTitle">
+          <Form.Group className="mb-3" controlId="formHotelTitle">
             <InputGroup>
-              <InputGroup.Text id="formBookTitle">B</InputGroup.Text>
+              <InputGroup.Text id="formHotelTitle">B</InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Phone-No"
@@ -128,9 +128,9 @@ const AddFood = ({ id, setFoodId }) => {
             </InputGroup>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBookTitle">
+          <Form.Group className="mb-3" controlId="formHotelTitle">
             <InputGroup>
-              <InputGroup.Text id="formBookTitle">B</InputGroup.Text>
+              <InputGroup.Text id="formHotelTitle">B</InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Edible-Food"
@@ -140,9 +140,9 @@ const AddFood = ({ id, setFoodId }) => {
             </InputGroup>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBookTitle">
+          <Form.Group className="mb-3" controlId="formHotelTitle">
             <InputGroup>
-              <InputGroup.Text id="formBookTitle">B</InputGroup.Text>
+              <InputGroup.Text id="formHotelTitle">B</InputGroup.Text>
               <Form.Control
                 type="text"
                 placeholder="Non-Edible-Food"

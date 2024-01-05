@@ -1,33 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { Card, Button } from "react-bootstrap";
-import { bookDataService } from "../../services/service";
+import { hotelDataService } from "../../services/service";
 import Cookies from "js-cookie";
 import { BsArrowRepeat } from 'react-icons/bs';
 
 const FoodsList = ({ getFoodId, isComposter, isHotel, isNgo }) => {
-  const [books, setBooks] = useState([]);
+  const [hotels, setHotels] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    getBooks();
+    getHotels();
   }, []);
 
-  const getBooks = async () => {
-    const data = await bookDataService.getAllBooks();
-    setBooks(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  const getHotels = async () => {
+    const data = await hotelDataService.getAllHotels();
+    setHotels(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
-
+   
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
   };
 
-  const filteredBooks = books.filter((doc) =>
+  const filteredHotels = hotels.filter((doc) =>
     doc.location.toLowerCase().startsWith(searchQuery.toLowerCase())
   );
 
   const deleteHandler = async (id) => {
-    await bookDataService.deleteBook(id);
-    getBooks();
+    await hotelDataService.deleteHotel(id);
+    getHotels();
   };
 
   return (
@@ -36,7 +36,7 @@ const FoodsList = ({ getFoodId, isComposter, isHotel, isNgo }) => {
         <div className="d-flex align-items-center">
         <BsArrowRepeat
             className="refresh-icon m-2 font-bold p-2"
-            onClick={getBooks}
+            onClick={getHotels}
             title="Refresh List"
           />
           <input
@@ -50,7 +50,7 @@ const FoodsList = ({ getFoodId, isComposter, isHotel, isNgo }) => {
       </div>
 
       <div className="d-flex flex-wrap">
-        {filteredBooks.map((doc, index) => (
+        {filteredHotels.map((doc, index) => (
           <Card key={doc.id} className="m-2" style={{ width: "18rem", borderRadius: "16px", boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}>
             <Card.Body>
               <Card.Img variant="top" src={doc.profileImageUrl} style={{ width: "100%", height: "200px", objectFit: "cover", borderRadius: "16px 16px 0 0" }} />

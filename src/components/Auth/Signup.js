@@ -41,7 +41,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage'
                     const url = await getDownloadURL(storageRef);
                     profileImageUrl = url;
                 }
-
+                
                 const datatofirestore = await userDataService.addUser({
                     uid,
                     name,

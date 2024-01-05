@@ -3,33 +3,33 @@ import { getFirestore, collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc
 
 
 const db = getFirestore(app);
-const bookCollectionRef = collection(db, "books");
+const hotelCollectionRef = collection(db, "hotels");
 const userCollectionRef = collection(db, "users");
 const composeCollectionRef = collection(db, "composters");
 
-class BookDataService {
+class HotelDataService {
 
-  addBooks = (newBook) => {
-    return addDoc(bookCollectionRef, newBook);
+  addHotels = (newHotel) => {
+    return addDoc(hotelCollectionRef, newHotel);
   };
 
-  updateBook = (id, updatedBook) => {
-    const bookDoc = doc(db, "books", id);
-    return updateDoc(bookDoc, updatedBook);
+  updateHotel = (id, updatedHotel) => {
+    const hotelDoc = doc(db, "hotels", id);
+    return updateDoc(hotelDoc, updatedHotel);
   };
 
-  deleteBook = (id) => {
-    const bookDoc = doc(db, "books", id);
-    return deleteDoc(bookDoc);
+  deleteHotel = (id) => {
+    const hotelDoc = doc(db, "hotels", id);
+    return deleteDoc(hotelDoc);
   };
 
-  getAllBooks = () => {
-    return getDocs(bookCollectionRef);
+  getAllHotels = () => {
+    return getDocs(hotelCollectionRef);
   };
 
-  getBook = (id) => {
-    const bookDoc = doc(db, "books", id);
-    return getDoc(bookDoc);
+  getHotel = (id) => {
+    const hotelDoc = doc(db, "hotels", id);
+    return getDoc(hotelDoc);
   };
 }
 
@@ -92,8 +92,8 @@ class ComposterDataService {
 
 }
 
-const bookDataService = new BookDataService();
+const hotelDataService = new HotelDataService();
 const userDataService = new UserDataService();
 const composterDataService = new ComposterDataService();
 
-export { bookDataService, userDataService, composterDataService };
+export { hotelDataService, userDataService, composterDataService };

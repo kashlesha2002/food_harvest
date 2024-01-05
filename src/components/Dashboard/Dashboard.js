@@ -24,7 +24,7 @@ function Dashboard() {
           </Col>
         </Row>
       </Container>
-      <Container>
+      <Container> 
         <Row>
           <Col>
             <FoodsList getFoodId ={getFoodIdHandler} isHotel={true} />
