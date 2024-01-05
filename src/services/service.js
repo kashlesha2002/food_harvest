@@ -17,7 +17,7 @@ class HotelDataService {
     const hotelDoc = doc(db, "hotels", id);
     return updateDoc(hotelDoc, updatedHotel);
   };
-
+   
   deleteHotel = (id) => {
     const hotelDoc = doc(db, "hotels", id);
     return deleteDoc(hotelDoc);

@@ -11,7 +11,7 @@ const FoodsList = ({ getFoodId, isComposter, isHotel, isNgo }) => {
   useEffect(() => {
     getHotels();
   }, []);
-
+       
   const getHotels = async () => {
     const data = await hotelDataService.getAllHotels();
     setHotels(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));

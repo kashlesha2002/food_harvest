@@ -48,7 +48,7 @@ const AddFood = ({ id, setFoodId }) => {
     } catch (err) {
       setMessage({ error: true, msg: err.message });
     }
-
+ 
     setHotelname("");
     setLocation("");
     setPhoneNum("");
@@ -151,9 +151,6 @@ const AddFood = ({ id, setFoodId }) => {
               />
             </InputGroup>
           </Form.Group>
-
-
-          
 
           <ButtonGroup aria-label="Basic example" className="mb-3">
             <Button
